@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94124F791B811365004D003F /* ChangeListNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94124F781B811365004D003F /* ChangeListNameViewController.swift */; };
+		94124F7B1B8116D8004D003F /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94124F7A1B8116D8004D003F /* AddItemViewController.swift */; };
+		946CA65A1B805C9100336FFB /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CA6591B805C9100336FFB /* ToDoItem.swift */; };
+		946CA65C1B805CB800336FFB /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CA65B1B805CB800336FFB /* ToDoList.swift */; };
 		94F38F171B800A740087AEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F38F161B800A740087AEA7 /* AppDelegate.swift */; };
 		94F38F191B800A740087AEA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F38F181B800A740087AEA7 /* ViewController.swift */; };
 		94F38F1C1B800A740087AEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F38F1A1B800A740087AEA7 /* Main.storyboard */; };
@@ -26,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		94124F781B811365004D003F /* ChangeListNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeListNameViewController.swift; sourceTree = "<group>"; };
+		94124F7A1B8116D8004D003F /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		946CA6591B805C9100336FFB /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		946CA65B1B805CB800336FFB /* ToDoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		94F38F111B800A740087AEA7 /* SimpleToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F38F151B800A740087AEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F38F161B800A740087AEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,8 +85,12 @@
 		94F38F131B800A740087AEA7 /* SimpleToDo */ = {
 			isa = PBXGroup;
 			children = (
+				946CA65B1B805CB800336FFB /* ToDoList.swift */,
+				946CA6591B805C9100336FFB /* ToDoItem.swift */,
 				94F38F161B800A740087AEA7 /* AppDelegate.swift */,
 				94F38F181B800A740087AEA7 /* ViewController.swift */,
+				94124F781B811365004D003F /* ChangeListNameViewController.swift */,
+				94124F7A1B8116D8004D003F /* AddItemViewController.swift */,
 				94F38F1A1B800A740087AEA7 /* Main.storyboard */,
 				94F38F1D1B800A740087AEA7 /* Images.xcassets */,
 				94F38F1F1B800A740087AEA7 /* LaunchScreen.xib */,
@@ -214,6 +226,10 @@
 			files = (
 				94F38F191B800A740087AEA7 /* ViewController.swift in Sources */,
 				94F38F171B800A740087AEA7 /* AppDelegate.swift in Sources */,
+				946CA65A1B805C9100336FFB /* ToDoItem.swift in Sources */,
+				946CA65C1B805CB800336FFB /* ToDoList.swift in Sources */,
+				94124F791B811365004D003F /* ChangeListNameViewController.swift in Sources */,
+				94124F7B1B8116D8004D003F /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +427,7 @@
 				94F38F321B800A740087AEA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94F38F331B800A740087AEA7 /* Build configuration list for PBXNativeTarget "SimpleToDoTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +436,7 @@
 				94F38F351B800A740087AEA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
