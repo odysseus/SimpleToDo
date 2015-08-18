@@ -34,8 +34,34 @@
                                                 <segue destination="5QG-Wy-s7r" kind="show" identifier="changeListNameSegue" id="VHT-RN-pow"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Completed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6D-NR-3h5">
+                                            <rect key="frame" x="137" y="11" width="118" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="118" id="25h-cF-pJi"/>
+                                                <constraint firstAttribute="height" constant="21" id="yQQ-CN-jvm"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-M5-xy4">
+                                            <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="39K-Y2-39O"/>
+                                                <constraint firstAttribute="width" constant="49" id="Hob-c4-0vc"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="showCompletedToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="0h6-YC-7P3"/>
+                                            </connections>
+                                        </switch>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="dfJ-M5-xy4" secondAttribute="trailing" constant="8" id="1aa-SU-ggh"/>
+                                        <constraint firstAttribute="centerY" secondItem="P6D-NR-3h5" secondAttribute="centerY" id="Myd-IQ-noy"/>
+                                        <constraint firstItem="dfJ-M5-xy4" firstAttribute="leading" secondItem="P6D-NR-3h5" secondAttribute="trailing" constant="8" id="ky0-B1-RWQ"/>
+                                        <constraint firstAttribute="centerY" secondItem="dfJ-M5-xy4" secondAttribute="centerY" id="yfy-Dy-3z0"/>
+                                    </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="nAB-Z7-m6u">
                                     <rect key="frame" x="0.0" y="110" width="320" height="44"/>
@@ -50,39 +76,8 @@
                                                 <segue destination="Yc6-s4-8dK" kind="show" identifier="addToDoItemSegue" id="2Sw-BT-F0X"/>
                                             </connections>
                                         </button>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lv-gi-ApG">
-                                            <rect key="frame" x="263" y="6" width="51" height="31"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="31" id="9at-0t-B1M"/>
-                                                <constraint firstAttribute="width" constant="49" id="kbg-lb-ifa"/>
-                                            </constraints>
-                                        </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Completed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7T-Sk-cUh">
-                                            <rect key="frame" x="132" y="11" width="123" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="123" id="8bH-0D-Jym"/>
-                                                <constraint firstAttribute="height" constant="21" id="PL9-6w-GYg"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="7lv-gi-ApG" firstAttribute="leading" secondItem="C7T-Sk-cUh" secondAttribute="trailing" constant="8" id="0uB-UO-t9J"/>
-                                        <constraint firstAttribute="centerY" secondItem="C7T-Sk-cUh" secondAttribute="centerY" id="30x-2n-duV"/>
-                                        <constraint firstAttribute="trailing" secondItem="7lv-gi-ApG" secondAttribute="trailing" constant="8" id="PRb-5c-XWH"/>
-                                        <constraint firstItem="7lv-gi-ApG" firstAttribute="top" secondItem="nAB-Z7-m6u" secondAttribute="top" constant="6" id="XEE-qA-F9S"/>
-                                        <constraint firstItem="C7T-Sk-cUh" firstAttribute="top" secondItem="nAB-Z7-m6u" secondAttribute="top" constant="11" id="eat-9g-qF4"/>
-                                        <constraint firstAttribute="centerY" secondItem="7lv-gi-ApG" secondAttribute="centerY" id="v43-aS-ulN"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="eat-9g-qF4"/>
-                                            <exclude reference="XEE-qA-F9S"/>
-                                        </mask>
-                                    </variation>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToDoCell" id="epa-gq-EHP">
@@ -124,7 +119,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="listNameButton" destination="syf-OK-Uft" id="Ndy-bd-S0X"/>
-                        <outlet property="showCompletedSwitch" destination="7lv-gi-ApG" id="BhY-1y-SBD"/>
+                        <outlet property="showCompletedSwitch" destination="dfJ-M5-xy4" id="LX6-jn-R1y"/>
                         <outlet property="tableView" destination="Qxv-or-oHH" id="YfB-4J-E9a"/>
                     </connections>
                 </viewController>
@@ -289,6 +284,13 @@
                                 <connections>
                                     <segue destination="TAX-oA-W52" kind="unwind" unwindAction="unwindFromChangeName:" id="66T-IZ-49j"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sM-0o-0Wv">
+                                <rect key="frame" x="92" y="209" width="137" height="30"/>
+                                <state key="normal" title="Remove Completed">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -67,7 +67,23 @@ class ToDoList: NSObject, NSCoding {
     }
     
     func totalIncomplete() -> Int {
-        return self.count() - self.totalCompleted()
+        var total = 0
+        for item in self.items {
+            if !item.completed {
+                total++
+            }
+        }
+        return total
+    }
+    
+    func incompleteItems() -> [ToDoItem] {
+        var incomplete: [ToDoItem] = []
+        for item in self.items {
+            if !item.completed {
+                incomplete.append(item)
+            }
+        }
+        return incomplete
     }
 }
 

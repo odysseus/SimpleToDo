@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         if let data = NSUserDefaults.standardUserDefaults().objectForKey("toDoList") as? NSData {
             self.toDoList = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! ToDoList
+            self.showCompletedSwitch.on = NSUserDefaults.standardUserDefaults().objectForKey("showCompletedSwitchState") as! Bool
         }
     }
     
@@ -36,6 +37,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
+    // IB Actions
+    
+    @IBAction func showCompletedToggled(sender: AnyObject) {
+        tableView.reloadData()
+    }
+    
     // Table View Functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -43,13 +50,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDoList.count()
+        if self.showCompletedSwitch.on {
+            return self.toDoList.count()
+        } else {
+            return self.toDoList.totalIncomplete()
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ToDoCell") as! UITableViewCell
-        let index = indexPath.row
-        let item = toDoList.itemAtIndex(index)
+        
+        var items: [ToDoItem] = []
+        if self.showCompletedSwitch.on {
+            items = self.toDoList.items
+        } else {
+            items = self.toDoList.incompleteItems()
+        }
+        
+        var index = indexPath.row
+        let item = items[index]
         
         cell.textLabel?.text = item.name
         if item.completed {
@@ -151,8 +170,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func saveData() {
         println("Archiving state")
         let encodedList: NSData = NSKeyedArchiver.archivedDataWithRootObject(self.toDoList)
+        let switchState = self.showCompletedSwitch.on
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(encodedList, forKey: "toDoList")
+        defaults.setObject(switchState, forKey: "showCompletedSwitchState")
         defaults.synchronize()
     }
 
