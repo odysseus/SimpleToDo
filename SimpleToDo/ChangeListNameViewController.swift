@@ -10,12 +10,16 @@ import UIKit
 
 class ChangeListNameViewController: UIViewController {
     
+    var toDoList: ToDoList?
+    
     @IBOutlet var nameField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.nameField.placeholder = self.toDoList!.name
     }
     
     override func didReceiveMemoryWarning() {

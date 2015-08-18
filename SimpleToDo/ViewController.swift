@@ -11,9 +11,13 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var toDoList = ToDoList(name: "To Do")
+    var selectedItem: ToDoItem?
+    
     @IBOutlet weak var listNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
+    // View Delegate Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,6 +36,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
+    // Table View Functions
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -48,6 +54,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return cell
     }
+    
+    // Segue and Storyboard functions
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let segueName = segue.identifier
+        
+        if segueName == "changeListNameSegue" {
+            changeListNameSegue(segue)
+        } else if segueName == "editItemSegue" {
+            editItemSegue(segue)
+        }
+    }
+    
+    func changeListNameSegue(segue: UIStoryboardSegue) {
+        let destination = segue.destinationViewController as! ChangeListNameViewController
+        destination.toDoList = self.toDoList
+    }
+    
+    func editItemSegue(segue: UIStoryboardSegue) {
+        // Get the indexPath and index
+        let indexPath = tableView.indexPathForSelectedRow()!
+        let index = indexPath.row
+        
+        // Find the selected item, get the destination VC and set the item in it
+        self.selectedItem = self.toDoList.itemAtIndex(index)
+        let destination = segue.destinationViewController as! EditItemViewController
+        destination.item = self.selectedItem
+        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    // Unwind Actions
     
     @IBAction func unwindFromChangeName(segue: UIStoryboardSegue) {
         let source = segue.sourceViewController as! ChangeListNameViewController
@@ -71,6 +109,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return
     }
     
+    @IBAction func unwindFromMarkCompleted(segue: UIStoryboardSegue) {
+        self.selectedItem!.completed = true
+        self.selectedItem!.completedAt = NSDate()
+        
+        self.tableView.reloadData()
+        self.selectedItem = nil
+    }
+    
+    @IBAction func unwindFromChangeItemName(segue: UIStoryboardSegue) {
+        let source = segue.sourceViewController as! EditItemViewController
+        let newName = source.nameTextField.text
+        
+        if newName != "" {
+            self.selectedItem!.name = newName
+        }
+        self.tableView.reloadData()
+        self.selectedItem = nil
+    }
+    
+    @IBAction func unwindFromDeleteItem(segue: UIStoryboardSegue) {
+        self.toDoList.removeItem(self.selectedItem!)
+        
+        self.tableView.reloadData()
+        self.selectedItem = nil
+    }
+    
+    // NSUserDefaults and Saving State
+    
     func saveData() {
         println("Archiving state")
         let encodedList: NSData = NSKeyedArchiver.archivedDataWithRootObject(self.toDoList)
@@ -80,4 +146,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

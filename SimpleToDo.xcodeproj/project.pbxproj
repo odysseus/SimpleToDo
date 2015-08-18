@@ -11,6 +11,7 @@
 		94124F7B1B8116D8004D003F /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94124F7A1B8116D8004D003F /* AddItemViewController.swift */; };
 		946CA65A1B805C9100336FFB /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CA6591B805C9100336FFB /* ToDoItem.swift */; };
 		946CA65C1B805CB800336FFB /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CA65B1B805CB800336FFB /* ToDoList.swift */; };
+		94984D691B8291DF00DA3E0B /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94984D681B8291DF00DA3E0B /* EditItemViewController.swift */; };
 		94F38F171B800A740087AEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F38F161B800A740087AEA7 /* AppDelegate.swift */; };
 		94F38F191B800A740087AEA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F38F181B800A740087AEA7 /* ViewController.swift */; };
 		94F38F1C1B800A740087AEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94F38F1A1B800A740087AEA7 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		94124F7A1B8116D8004D003F /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		946CA6591B805C9100336FFB /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		946CA65B1B805CB800336FFB /* ToDoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		94984D681B8291DF00DA3E0B /* EditItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		94F38F111B800A740087AEA7 /* SimpleToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F38F151B800A740087AEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F38F161B800A740087AEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,13 +87,14 @@
 		94F38F131B800A740087AEA7 /* SimpleToDo */ = {
 			isa = PBXGroup;
 			children = (
+				94F38F1A1B800A740087AEA7 /* Main.storyboard */,
 				946CA65B1B805CB800336FFB /* ToDoList.swift */,
 				946CA6591B805C9100336FFB /* ToDoItem.swift */,
 				94F38F161B800A740087AEA7 /* AppDelegate.swift */,
 				94F38F181B800A740087AEA7 /* ViewController.swift */,
 				94124F781B811365004D003F /* ChangeListNameViewController.swift */,
 				94124F7A1B8116D8004D003F /* AddItemViewController.swift */,
-				94F38F1A1B800A740087AEA7 /* Main.storyboard */,
+				94984D681B8291DF00DA3E0B /* EditItemViewController.swift */,
 				94F38F1D1B800A740087AEA7 /* Images.xcassets */,
 				94F38F1F1B800A740087AEA7 /* LaunchScreen.xib */,
 				94F38F141B800A740087AEA7 /* Supporting Files */,
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94F38F191B800A740087AEA7 /* ViewController.swift in Sources */,
+				94984D691B8291DF00DA3E0B /* EditItemViewController.swift in Sources */,
 				94F38F171B800A740087AEA7 /* AppDelegate.swift in Sources */,
 				946CA65A1B805C9100336FFB /* ToDoItem.swift in Sources */,
 				946CA65C1B805CB800336FFB /* ToDoList.swift in Sources */,
@@ -346,6 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
