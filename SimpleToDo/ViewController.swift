@@ -15,13 +15,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var listNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var showCompletedSwitch: UISwitch!
 
     // View Delegate Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+
         if let data = NSUserDefaults.standardUserDefaults().objectForKey("toDoList") as? NSData {
             self.toDoList = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! ToDoList
         }
@@ -49,8 +49,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ToDoCell") as! UITableViewCell
         let index = indexPath.row
+        let item = toDoList.itemAtIndex(index)
         
-        cell.textLabel?.text = toDoList.itemNameForIndex(index)
+        cell.textLabel?.text = item.name
+        if item.completed {
+            cell.textLabel?.textColor = UIColor.flatNephritis()
+        } else {
+            cell.textLabel?.textColor = UIColor.blackColor()
+        }
         
         return cell
     }
@@ -109,9 +115,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return
     }
     
-    @IBAction func unwindFromMarkCompleted(segue: UIStoryboardSegue) {
-        self.selectedItem!.completed = true
-        self.selectedItem!.completedAt = NSDate()
+    @IBAction func unwindFromToggleCompletion(segue: UIStoryboardSegue) {
+        if self.selectedItem!.completed {
+            self.selectedItem!.completed = false
+            self.selectedItem?.completedAt = nil
+        } else {
+            self.selectedItem!.completed = true
+            self.selectedItem!.completedAt = NSDate()
+        }
         
         self.tableView.reloadData()
         self.selectedItem = nil

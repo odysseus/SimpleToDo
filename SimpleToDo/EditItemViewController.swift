@@ -17,13 +17,17 @@ class EditItemViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let flatNephritis = UIColor(red: CGFloat(39.0/255.0), green: CGFloat(174.0/255.0), blue: CGFloat(96.0/255.0), alpha: CGFloat(1.0))
-        self.markCompleteButton.setTitleColor(flatNephritis, forState: .Normal)
     }
     
     override func viewWillAppear(animated: Bool) {
         self.nameTextField.placeholder = self.item!.name
+        if self.item!.completed {
+            self.markCompleteButton.setTitle("Mark Incomplete", forState: .Normal)
+            self.markCompleteButton.setTitleColor(UIColor.flatPumpkin(), forState: .Normal)
+        } else {
+            self.markCompleteButton.setTitle("Mark Complete", forState: .Normal)
+            self.markCompleteButton.setTitleColor(UIColor.flatNephritis(), forState: .Normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {

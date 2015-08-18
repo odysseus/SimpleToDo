@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Qxv-or-oHH">
-                                <rect key="frame" x="0.0" y="20" width="320" height="476"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Yib-kE-fDm">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -50,17 +50,39 @@
                                                 <segue destination="Yc6-s4-8dK" kind="show" identifier="addToDoItemSegue" id="2Sw-BT-F0X"/>
                                             </connections>
                                         </button>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lv-gi-ApG">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7lv-gi-ApG">
                                             <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="9at-0t-B1M"/>
+                                                <constraint firstAttribute="width" constant="49" id="kbg-lb-ifa"/>
+                                            </constraints>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Completed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7T-Sk-cUh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Completed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7T-Sk-cUh">
                                             <rect key="frame" x="132" y="11" width="123" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="123" id="8bH-0D-Jym"/>
+                                                <constraint firstAttribute="height" constant="21" id="PL9-6w-GYg"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="7lv-gi-ApG" firstAttribute="leading" secondItem="C7T-Sk-cUh" secondAttribute="trailing" constant="8" id="0uB-UO-t9J"/>
+                                        <constraint firstAttribute="centerY" secondItem="C7T-Sk-cUh" secondAttribute="centerY" id="30x-2n-duV"/>
+                                        <constraint firstAttribute="trailing" secondItem="7lv-gi-ApG" secondAttribute="trailing" constant="8" id="PRb-5c-XWH"/>
+                                        <constraint firstItem="7lv-gi-ApG" firstAttribute="top" secondItem="nAB-Z7-m6u" secondAttribute="top" constant="6" id="XEE-qA-F9S"/>
+                                        <constraint firstItem="C7T-Sk-cUh" firstAttribute="top" secondItem="nAB-Z7-m6u" secondAttribute="top" constant="11" id="eat-9g-qF4"/>
+                                        <constraint firstAttribute="centerY" secondItem="7lv-gi-ApG" secondAttribute="centerY" id="v43-aS-ulN"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="eat-9g-qF4"/>
+                                            <exclude reference="XEE-qA-F9S"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToDoCell" id="epa-gq-EHP">
@@ -84,7 +106,7 @@
                             <constraint firstItem="Qxv-or-oHH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AiR-2e-ffS"/>
                             <constraint firstItem="Qxv-or-oHH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CfO-jm-JeS"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Qxv-or-oHH" secondAttribute="bottom" constant="-16" id="EH6-He-jh0"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Qxv-or-oHH" secondAttribute="bottom" constant="-16" id="EST-xa-R0b"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Qxv-or-oHH" secondAttribute="bottom" id="EST-xa-R0b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qxv-or-oHH" secondAttribute="trailing" constant="-16" id="Nnw-K6-yCa"/>
                             <constraint firstItem="Qxv-or-oHH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="SMc-lG-QkU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qxv-or-oHH" secondAttribute="trailing" constant="-16" id="W04-gQ-g2o"/>
@@ -102,6 +124,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="listNameButton" destination="syf-OK-Uft" id="Ndy-bd-S0X"/>
+                        <outlet property="showCompletedSwitch" destination="7lv-gi-ApG" id="BhY-1y-SBD"/>
                         <outlet property="tableView" destination="Qxv-or-oHH" id="YfB-4J-E9a"/>
                     </connections>
                 </viewController>
@@ -122,9 +145,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fG-Ts-RKA">
-                                <rect key="frame" x="107" y="90" width="106" height="30"/>
+                                <rect key="frame" x="70" y="90" width="180" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="106" id="a9a-uq-fl3"/>
+                                    <constraint firstAttribute="width" constant="180" id="a9a-uq-fl3"/>
                                     <constraint firstAttribute="height" constant="30" id="fBh-yQ-D34"/>
                                 </constraints>
                                 <state key="normal" title="Mark Complete">
@@ -132,7 +155,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="I5z-l4-6YP" kind="unwind" unwindAction="unwindFromMarkCompleted:" id="sMR-w2-4kc"/>
+                                    <segue destination="I5z-l4-6YP" kind="unwind" unwindAction="unwindFromToggleCompletion:" id="GOC-AD-zxK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEG-sa-phS">

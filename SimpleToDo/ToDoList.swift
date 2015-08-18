@@ -52,11 +52,31 @@ class ToDoList: NSObject, NSCoding {
         return self.items.count
     }
     
-    func itemNameForIndex(index: Int) -> String {
-        return self.items[index].name
-    }
-    
     func changeName(name: String) {
         self.name = name
     }
+    
+    func totalCompleted() -> Int {
+        var total = 0
+        for item in self.items {
+            if item.completed {
+                total++
+            }
+        }
+        return total
+    }
+    
+    func totalIncomplete() -> Int {
+        return self.count() - self.totalCompleted()
+    }
 }
+
+
+
+
+
+
+
+
+
+
