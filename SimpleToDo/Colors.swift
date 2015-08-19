@@ -16,12 +16,10 @@ extension UIColor {
         return UIColor(red: floatRed, green: floatGreen, blue: floatBlue, alpha: CGFloat(a))
     }
     
-    // rgba(39, 174, 96, 1.0)
     class func flatNephritis() -> UIColor {
         return UIColor.rgba(39, g: 174, b: 96, a: 1.0)
     }
     
-    // rgba(211, 84, 0, 1.0)
     class func flatPumpkin() -> UIColor {
         return UIColor.rgba(211, g: 84, b: 0, a: 1.0)
     }

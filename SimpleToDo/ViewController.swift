@@ -112,7 +112,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Unwind Actions
     
-    @IBAction func unwindFromChangeName(segue: UIStoryboardSegue) {
+    @IBAction func unwindFromChangeListName(segue: UIStoryboardSegue) {
         let source = segue.sourceViewController as! ChangeListNameViewController
         let name = source.nameField.text
         if name != "" {
@@ -163,6 +163,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.tableView.reloadData()
         self.selectedItem = nil
+    }
+    
+    @IBAction func unwindFromRemoveCompleted(segue: UIStoryboardSegue) {
+        self.toDoList.removeCompleted()
+        self.tableView.reloadData()
     }
     
     // NSUserDefaults and Saving State

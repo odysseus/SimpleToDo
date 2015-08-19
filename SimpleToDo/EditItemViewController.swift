@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditItemViewController: UIViewController {
+class EditItemViewController: UIViewController, UITextFieldDelegate {
     
     var item: ToDoItem?
     
@@ -17,6 +17,8 @@ class EditItemViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nameTextField.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -33,6 +35,17 @@ class EditItemViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.performSegueWithIdentifier("changeItemNameTextFieldSegue", sender: self)
+        
+        return true
     }
     
 }

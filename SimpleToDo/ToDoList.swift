@@ -85,6 +85,10 @@ class ToDoList: NSObject, NSCoding {
         }
         return incomplete
     }
+    
+    func removeCompleted() {
+        self.items = self.incompleteItems()
+    }
 }
 
 

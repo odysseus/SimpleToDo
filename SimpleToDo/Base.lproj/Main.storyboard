@@ -174,7 +174,7 @@
                                     <constraint firstAttribute="height" constant="30" id="ZOI-wi-wtO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ny-Oh-UJa">
                                 <rect key="frame" x="111" y="182" width="98" height="30"/>
@@ -221,6 +221,7 @@
                     <connections>
                         <outlet property="markCompleteButton" destination="4fG-Ts-RKA" id="5nz-WI-ett"/>
                         <outlet property="nameTextField" destination="1UT-ea-61m" id="dK7-Lu-g5v"/>
+                        <segue destination="I5z-l4-6YP" kind="unwind" identifier="changeItemNameTextFieldSegue" unwindAction="unwindFromChangeItemName:" id="lFp-LO-VFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJj-ZH-DUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,7 +258,7 @@
                                     <constraint firstAttribute="width" constant="180" id="nwZ-Gr-VrM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjV-k6-90W">
                                 <rect key="frame" x="202" y="156" width="48" height="30"/>
@@ -282,24 +283,33 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="TAX-oA-W52" kind="unwind" unwindAction="unwindFromChangeName:" id="66T-IZ-49j"/>
+                                    <segue destination="TAX-oA-W52" kind="unwind" unwindAction="unwindFromChangeListName:" id="YiV-p7-QmH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sM-0o-0Wv">
-                                <rect key="frame" x="92" y="209" width="137" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sM-0o-0Wv">
+                                <rect key="frame" x="92" y="210" width="137" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="WZ5-2N-xbZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="agl-Kz-hFW"/>
+                                </constraints>
                                 <state key="normal" title="Remove Completed">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="TAX-oA-W52" kind="unwind" unwindAction="unwindFromRemoveCompleted:" id="NrA-HQ-xw2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="2sM-0o-0Wv" secondAttribute="centerX" id="4m9-Hv-wRd"/>
                             <constraint firstItem="GU7-z3-xFe" firstAttribute="trailing" secondItem="HjV-k6-90W" secondAttribute="trailing" id="5xm-Sd-kEc"/>
                             <constraint firstItem="HjV-k6-90W" firstAttribute="top" secondItem="GU7-z3-xFe" secondAttribute="bottom" constant="22" id="AuG-p3-gmX"/>
                             <constraint firstAttribute="centerX" secondItem="GU7-z3-xFe" secondAttribute="centerX" id="AxP-Td-3ui"/>
                             <constraint firstItem="vgY-I7-LQp" firstAttribute="top" secondItem="dqa-PZ-54R" secondAttribute="bottom" constant="55" id="Nn3-dA-4c5"/>
                             <constraint firstItem="pXW-zT-6Kq" firstAttribute="top" secondItem="GU7-z3-xFe" secondAttribute="bottom" constant="22" id="TDK-3H-E0R"/>
+                            <constraint firstItem="2sM-0o-0Wv" firstAttribute="top" secondItem="pXW-zT-6Kq" secondAttribute="bottom" constant="24" id="cGH-pz-VYx"/>
                             <constraint firstItem="GU7-z3-xFe" firstAttribute="leading" secondItem="pXW-zT-6Kq" secondAttribute="leading" id="fTO-8m-UyJ"/>
                             <constraint firstAttribute="centerX" secondItem="vgY-I7-LQp" secondAttribute="centerX" id="l3D-Qp-mbB"/>
                             <constraint firstItem="GU7-z3-xFe" firstAttribute="top" secondItem="vgY-I7-LQp" secondAttribute="bottom" constant="8" id="oS3-nX-fsR"/>
@@ -307,6 +317,7 @@
                     </view>
                     <connections>
                         <outlet property="nameField" destination="GU7-z3-xFe" id="HFV-Uw-001"/>
+                        <segue destination="TAX-oA-W52" kind="unwind" identifier="changeListNameTextFieldSegue" unwindAction="unwindFromChangeListName:" id="aZf-hd-zEa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQn-n5-sn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,7 +344,7 @@
                                     <constraint firstAttribute="width" constant="180" id="bbv-i6-UHn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znp-4B-1So">
                                 <rect key="frame" x="123" y="65" width="75" height="21"/>
@@ -386,6 +397,7 @@
                     </view>
                     <connections>
                         <outlet property="itemNameField" destination="qwx-ee-e3i" id="DQ0-AJ-Xsd"/>
+                        <segue destination="egv-Yz-NQC" kind="unwind" identifier="addItemTextFieldSegue" unwindAction="unwindFromAddItem:" id="GFn-P3-FrS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWY-Jj-A3r" userLabel="First Responder" sceneMemberID="firstResponder"/>

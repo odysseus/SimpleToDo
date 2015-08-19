@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangeListNameViewController: UIViewController {
+class ChangeListNameViewController: UIViewController, UITextFieldDelegate {
     
     var toDoList: ToDoList?
     
@@ -16,6 +16,7 @@ class ChangeListNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.nameField.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -25,6 +26,18 @@ class ChangeListNameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        self.performSegueWithIdentifier("changeListNameTextFieldSegue", sender: self)
+        
+        return true
     }
 
 }
