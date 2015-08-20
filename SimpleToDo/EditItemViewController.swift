@@ -43,7 +43,7 @@ class EditItemViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        self.performSegueWithIdentifier("changeItemNameTextFieldSegue", sender: self)
+        self.performSegueWithIdentifier("unwindFromChangeItemName", sender: self)
         
         return true
     }

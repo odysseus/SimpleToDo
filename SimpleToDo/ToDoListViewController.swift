@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ToDoListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var toDoList = ToDoList(name: "To Do")
+    var index: Int?
+    var toDoList = ToDoList(listName: "To Do")
     var selectedItem: ToDoItem?
+    var containingViewController: UIViewController?
     
     @IBOutlet weak var listNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +23,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        listNameButton.titleLabel?.numberOfLines = 1
+        listNameButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        listNameButton.titleLabel?.lineBreakMode = .ByClipping
 
         if let data = NSUserDefaults.standardUserDefaults().objectForKey("toDoList") as? NSData {
             self.toDoList = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! ToDoList
@@ -113,6 +119,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Unwind Actions
     
     @IBAction func unwindFromChangeListName(segue: UIStoryboardSegue) {
+        println(segue.sourceViewController)
+        println(segue.destinationViewController)
         let source = segue.sourceViewController as! ChangeListNameViewController
         let name = source.nameField.text
         if name != "" {
@@ -154,6 +162,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if newName != "" {
             self.selectedItem!.name = newName
         }
+        
         self.tableView.reloadData()
         self.selectedItem = nil
     }

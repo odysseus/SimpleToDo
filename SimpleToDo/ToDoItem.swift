@@ -29,10 +29,10 @@ class ToDoItem: NSObject, NSCoding {
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeObject(completed, forKey: "completed")
-        aCoder.encodeObject(createdAt, forKey: "createdAt")
-        aCoder.encodeObject(completedAt, forKey: "completedAt")
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeObject(self.completed, forKey: "completed")
+        aCoder.encodeObject(self.createdAt, forKey: "createdAt")
+        aCoder.encodeObject(self.completedAt, forKey: "completedAt")
     }
     
     func markFinished() {

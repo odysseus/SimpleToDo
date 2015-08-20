@@ -13,10 +13,12 @@ class ChangeListNameViewController: UIViewController, UITextFieldDelegate {
     var toDoList: ToDoList?
     
     @IBOutlet var nameField: UITextField!
+    @IBOutlet weak var removeCompletedButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameField.delegate = self
+        self.removeCompletedButton.setTitleColor(UIColor.flatPumpkin(), forState: .Normal)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,7 +37,7 @@ class ChangeListNameViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        self.performSegueWithIdentifier("changeListNameTextFieldSegue", sender: self)
+        self.performSegueWithIdentifier("unwindFromChangeListName", sender: self)
         
         return true
     }

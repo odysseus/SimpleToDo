@@ -30,7 +30,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        self.performSegueWithIdentifier("addItemTextFieldSegue", sender: self)
+        self.performSegueWithIdentifier("unwindFromAddItem", sender: self)
         
         return true
     }
