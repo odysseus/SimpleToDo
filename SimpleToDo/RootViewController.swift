@@ -16,21 +16,24 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let lists = NSUserDefaults.standardUserDefaults().objectForKey("toDoLists") as? NSData {
+            toDoLists = NSKeyedUnarchiver.unarchiveObjectWithData(lists) as! ToDoListCollection
+        }
+        
         pageViewController = UIPageViewController()
-        pageViewController?.delegate = self
-        pageViewController?.dataSource = self
+        pageViewController!.delegate = self
+        pageViewController!.dataSource = self
         
         let initialVC = viewControllerAtIndex(0)
         self.pageViewController?.setViewControllers([initialVC], direction: .Forward, animated: false, completion: nil)
         
         self.addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
-        self.pageViewController?.didMoveToParentViewController(self)
+        self.pageViewController!.didMoveToParentViewController(self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func viewControllerAtIndex(index: Int) -> ToDoListViewController {
@@ -50,7 +53,6 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         } else {
             let currentVC = viewController as! ToDoListViewController
             let nextVC = viewControllerAtIndex(index - 1)
-            nextVC.showCompleted = currentVC.showCompleted
             return nextVC
         }
     }
@@ -64,13 +66,54 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         } else {
             let currentVC = viewController as! ToDoListViewController
             let nextVC = viewControllerAtIndex(index + 1)
-            nextVC.showCompleted = currentVC.showCompleted
             return nextVC
         }
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return toDoLists.count()
+    }
+    
+    func saveData() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let encodedLists = NSKeyedArchiver.archivedDataWithRootObject(toDoLists)
+        
+        defaults.setObject(encodedLists, forKey: "toDoLists")
+    }
+    
+    func seedData() -> ToDoListCollection {
+        let titles = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"]
+        let e = "egg"
+        let b = "bacon"
+        let t = "tomato"
+        let sa = "sausage"
+        let sp = "spam"
+        let strings = [
+            [e, b],
+            [e, sa, b],
+            [e, sp],
+            [e, b, sp],
+            [e, b, sa, sp],
+            [sp, b, sa, sp],
+            [sp, e, sp, sp, b, sp],
+            [sp, sa, sp, sp, b, sp, t, sp]
+        ]
+        
+        let lists = ToDoListCollection()
+        
+        for var i=0; i < strings.count; i++ {
+            let seq = strings[i]
+            let title = titles[i]
+            
+            let newList = ToDoList()
+            newList.name = title
+            for str in seq {
+                newList.addItem(byName: str)
+            }
+            lists.addList(newList)
+        }
+        
+        return lists
     }
 
 }

@@ -10,11 +10,13 @@ import UIKit
 
 class ToDoList: NSObject, NSCoding {
     var name: String
+    var showCompleted: Bool
     var items: [ToDoItem]
     
     override init() {
         name = "To Do"
         items = []
+        showCompleted = true
         super.init()
     }
     
@@ -25,16 +27,22 @@ class ToDoList: NSObject, NSCoding {
     
     required init(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObjectForKey("name") as! String
+        showCompleted = aDecoder.decodeObjectForKey("showCompleted") as! Bool
         items = aDecoder.decodeObjectForKey("items") as! [ToDoItem]
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeObject(showCompleted, forKey: "showCompleted")
         aCoder.encodeObject(items, forKey: "items")
     }
     
-    func addItem(name: String) {
+    func addItem(byName name: String) {
         let item = ToDoItem(name: name)
+        items.append(item)
+    }
+    
+    func addItem(item: ToDoItem) {
         items.append(item)
     }
     

@@ -13,7 +13,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     var index: Int?
     var toDoList = ToDoList(listName: "To Do")
     var selectedItem: ToDoItem?
-    var showCompleted = true
     
     @IBOutlet weak var listNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -24,29 +23,25 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.showCompletedSwitch.on = toDoList.showCompleted
+        
+        listNameButton.setTitle(toDoList.name, forState: .Normal)
         listNameButton.titleLabel?.numberOfLines = 1
         listNameButton.titleLabel?.adjustsFontSizeToFitWidth = true
         listNameButton.titleLabel?.lineBreakMode = .ByClipping
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.listNameButton.setTitle(self.toDoList.name, forState: .Normal)
-        self.showCompletedSwitch.on = self.showCompleted
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // IB Actions
     
     @IBAction func showCompletedToggled(sender: AnyObject) {
-        if showCompleted {
-            showCompleted = false
-        } else {
-            showCompleted = true
-        }
+        toDoList.showCompleted = showCompletedSwitch.on
         tableView.reloadData()
     }
     
@@ -109,10 +104,15 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
         let indexPath = tableView.indexPathForSelectedRow()!
         let index = indexPath.row
         
-        // Find the selected item, get the destination VC and set the item in it
-        self.selectedItem = self.toDoList.itemAtIndex(index)
+        if toDoList.showCompleted {
+            selectedItem = toDoList.itemAtIndex(index)
+        } else {
+            let incompleteItems = toDoList.incompleteItems()
+            selectedItem = incompleteItems[index]
+        }
+        
         let destination = segue.destinationViewController as! EditItemViewController
-        destination.item = self.selectedItem
+        destination.item = selectedItem
         
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -134,7 +134,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
         let source = segue.sourceViewController as! AddItemViewController
         let name = source.itemNameField.text
         if name != "" {
-            self.toDoList.addItem(name)
+            self.toDoList.addItem(byName: name)
             self.tableView.reloadData()
         }
     }

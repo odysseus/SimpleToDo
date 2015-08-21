@@ -13,7 +13,7 @@ class ToDoListCollection: NSObject, NSCoding {
     var lists: [ToDoList]
     
     override init() {
-        lists = [ToDoList(listName: "One"), ToDoList(listName: "Two"), ToDoList(listName: "Three")]
+        lists = []
         super.init()
     }
     
@@ -31,6 +31,18 @@ class ToDoListCollection: NSObject, NSCoding {
     
     func listAtIndex(index: Int) -> ToDoList {
         return lists[index]
+    }
+    
+    func addList(list: ToDoList) {
+        lists.append(list)
+    }
+    
+    func addList(list: ToDoList, withName name: String) {
+        lists.append(ToDoList(listName: name))
+    }
+    
+    func addEmptyList() {
+        addList(ToDoList())
     }
    
 }
