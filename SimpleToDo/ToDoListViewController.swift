@@ -13,7 +13,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     var index: Int?
     var toDoList = ToDoList(listName: "To Do")
     var selectedItem: ToDoItem?
-    var containingViewController: UIViewController?
     
     @IBOutlet weak var listNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -27,11 +26,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
         listNameButton.titleLabel?.numberOfLines = 1
         listNameButton.titleLabel?.adjustsFontSizeToFitWidth = true
         listNameButton.titleLabel?.lineBreakMode = .ByClipping
-
-        if let data = NSUserDefaults.standardUserDefaults().objectForKey("toDoList") as? NSData {
-            self.toDoList = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! ToDoList
-            self.showCompletedSwitch.on = NSUserDefaults.standardUserDefaults().objectForKey("showCompletedSwitchState") as! Bool
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -91,9 +85,9 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let segueName = segue.identifier
         
-        if segueName == "changeListNameSegue" {
+        if segueName == "showChangeListNameViewController" {
             changeListNameSegue(segue)
-        } else if segueName == "editItemSegue" {
+        } else if segueName == "showEditItemViewController" {
             editItemSegue(segue)
         }
     }
@@ -177,19 +171,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func unwindFromRemoveCompleted(segue: UIStoryboardSegue) {
         self.toDoList.removeCompleted()
         self.tableView.reloadData()
-    }
-    
-    // NSUserDefaults and Saving State
-    
-    func saveData() {
-        println("Archiving state")
-        let encodedList: NSData = NSKeyedArchiver.archivedDataWithRootObject(self.toDoList)
-        let switchState = self.showCompletedSwitch.on
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(encodedList, forKey: "toDoList")
-        defaults.setObject(switchState, forKey: "showCompletedSwitchState")
-        defaults.synchronize()
     }
 
 }

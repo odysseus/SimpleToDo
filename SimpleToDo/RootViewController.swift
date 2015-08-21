@@ -37,7 +37,6 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ToDoListViewController") as! ToDoListViewController
         vc.index = index
         vc.toDoList = toDoLists.listAtIndex(index)
-        vc.containingViewController = self
         
         return vc
     }
