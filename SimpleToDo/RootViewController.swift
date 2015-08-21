@@ -56,7 +56,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         let vc = viewController as! ToDoListViewController
         let index = vc.index!
         
-        if index == NSNotFound || index >= toDoLists.count() {
+        if index == (toDoLists.count() - 1) || index == NSNotFound {
             return nil
         } else {
             return viewControllerAtIndex(index + 1)
