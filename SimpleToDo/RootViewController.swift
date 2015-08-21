@@ -48,7 +48,10 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         if index == 0 || index == NSNotFound {
             return nil
         } else {
-            return viewControllerAtIndex(index - 1)
+            let currentVC = viewController as! ToDoListViewController
+            let nextVC = viewControllerAtIndex(index - 1)
+            nextVC.showCompleted = currentVC.showCompleted
+            return nextVC
         }
     }
     
@@ -59,7 +62,10 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         if index == (toDoLists.count() - 1) || index == NSNotFound {
             return nil
         } else {
-            return viewControllerAtIndex(index + 1)
+            let currentVC = viewController as! ToDoListViewController
+            let nextVC = viewControllerAtIndex(index + 1)
+            nextVC.showCompleted = currentVC.showCompleted
+            return nextVC
         }
     }
     

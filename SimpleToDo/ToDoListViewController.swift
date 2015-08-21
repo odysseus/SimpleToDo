@@ -13,6 +13,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     var index: Int?
     var toDoList = ToDoList(listName: "To Do")
     var selectedItem: ToDoItem?
+    var showCompleted = true
     
     @IBOutlet weak var listNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +31,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(animated: Bool) {
         self.listNameButton.setTitle(self.toDoList.name, forState: .Normal)
+        self.showCompletedSwitch.on = self.showCompleted
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +42,11 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     // IB Actions
     
     @IBAction func showCompletedToggled(sender: AnyObject) {
+        if showCompleted {
+            showCompleted = false
+        } else {
+            showCompleted = true
+        }
         tableView.reloadData()
     }
     

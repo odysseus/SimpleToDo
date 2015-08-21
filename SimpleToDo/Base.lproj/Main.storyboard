@@ -62,7 +62,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="5QG-Wy-s7r" kind="show" identifier="showChangeListNameViewController" id="DO9-0d-ZMI"/>
+                                                <segue destination="5QG-Wy-s7r" kind="presentation" identifier="showChangeListNameViewController" id="DO9-0d-ZMI"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -86,7 +86,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="Yc6-s4-8dK" kind="show" identifier="showAddItemViewController" id="BxO-rL-od2"/>
+                                                <segue destination="Yc6-s4-8dK" kind="presentation" identifier="showAddItemViewController" id="BxO-rL-od2"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -99,7 +99,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Onb-fq-fhD" kind="show" identifier="showEditItemViewController" id="3zx-8S-hqb"/>
+                                            <segue destination="Onb-fq-fhD" kind="presentation" identifier="showEditItemViewController" id="3zx-8S-hqb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
