@@ -45,7 +45,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="5QG-Wy-s7r" kind="presentation" identifier="showChangeListNameViewController" id="DO9-0d-ZMI"/>
+                                                <segue destination="5QG-Wy-s7r" kind="presentation" identifier="showEditListViewController" id="DO9-0d-ZMI"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -265,10 +265,10 @@
             </objects>
             <point key="canvasLocation" x="195" y="207"/>
         </scene>
-        <!--Change List Name View Controller-->
+        <!--Edit List View Controller-->
         <scene sceneID="cDD-Ad-rPB">
             <objects>
-                <viewController storyboardIdentifier="ChangeListNameViewController" id="5QG-Wy-s7r" customClass="ChangeListNameViewController" customModule="SimpleToDo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditListViewController" id="5QG-Wy-s7r" customClass="EditListViewController" customModule="SimpleToDo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dqa-PZ-54R"/>
                         <viewControllerLayoutGuide type="bottom" id="b9j-90-nE7"/>

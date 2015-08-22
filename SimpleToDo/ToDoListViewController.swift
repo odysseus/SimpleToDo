@@ -89,15 +89,15 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let segueName = segue.identifier
         
-        if segueName == "showChangeListNameViewController" {
-            changeListNameSegue(segue)
+        if segueName == "showEditListViewController" {
+            editListSegue(segue)
         } else if segueName == "showEditItemViewController" {
             editItemSegue(segue)
         }
     }
     
-    func changeListNameSegue(segue: UIStoryboardSegue) {
-        let destination = segue.destinationViewController as! ChangeListNameViewController
+    func editListSegue(segue: UIStoryboardSegue) {
+        let destination = segue.destinationViewController as! EditListViewController
         destination.toDoList = self.toDoList
     }
     
@@ -122,7 +122,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     // Unwind Actions
     
     @IBAction func unwindFromChangeListName(segue: UIStoryboardSegue) {
-        let source = segue.sourceViewController as! ChangeListNameViewController
+        let source = segue.sourceViewController as! EditListViewController
         let name = source.nameField.text
         if name != "" {
             self.toDoList.name = name

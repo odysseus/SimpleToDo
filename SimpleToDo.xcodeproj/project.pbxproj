@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94124F791B811365004D003F /* ChangeListNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94124F781B811365004D003F /* ChangeListNameViewController.swift */; };
+		94124F791B811365004D003F /* EditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94124F781B811365004D003F /* EditListViewController.swift */; };
 		94124F7B1B8116D8004D003F /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94124F7A1B8116D8004D003F /* AddItemViewController.swift */; };
 		946CA65A1B805C9100336FFB /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CA6591B805C9100336FFB /* ToDoItem.swift */; };
 		946CA65C1B805CB800336FFB /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946CA65B1B805CB800336FFB /* ToDoList.swift */; };
@@ -34,7 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		94124F781B811365004D003F /* ChangeListNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeListNameViewController.swift; sourceTree = "<group>"; };
+		94124F781B811365004D003F /* EditListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListViewController.swift; sourceTree = "<group>"; };
 		94124F7A1B8116D8004D003F /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		943BA3711B86910C0089F73B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		946CA6591B805C9100336FFB /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 			children = (
 				949C53361B863D6D00C66309 /* RootViewController.swift */,
 				94F38F181B800A740087AEA7 /* ToDoListViewController.swift */,
-				94124F781B811365004D003F /* ChangeListNameViewController.swift */,
+				94124F781B811365004D003F /* EditListViewController.swift */,
 				94124F7A1B8116D8004D003F /* AddItemViewController.swift */,
 				94984D681B8291DF00DA3E0B /* EditItemViewController.swift */,
 			);
@@ -270,7 +270,7 @@
 				949C533D1B86408F00C66309 /* ToDoListCollection.swift in Sources */,
 				946CA65A1B805C9100336FFB /* ToDoItem.swift in Sources */,
 				946CA65C1B805CB800336FFB /* ToDoList.swift in Sources */,
-				94124F791B811365004D003F /* ChangeListNameViewController.swift in Sources */,
+				94124F791B811365004D003F /* EditListViewController.swift in Sources */,
 				94124F7B1B8116D8004D003F /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

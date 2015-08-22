@@ -1,5 +1,5 @@
 //
-//  ChangeListNameViewController.swift
+//  EditListViewController.swift
 //  SimpleToDo
 //
 //  Created by Ryan Case on 8/16/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangeListNameViewController: UIViewController, UITextFieldDelegate {
+class EditListViewController: UIViewController, UITextFieldDelegate {
     
     var toDoList: ToDoList?
     
