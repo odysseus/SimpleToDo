@@ -31,6 +31,10 @@ class ToDoList: NSObject, NSCoding {
         items = aDecoder.decodeObjectForKey("items") as! [ToDoItem]
     }
     
+    subscript (index: Int) -> ToDoItem {
+        return items[index]
+    }
+    
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: "name")
         aCoder.encodeObject(showCompleted, forKey: "showCompleted")

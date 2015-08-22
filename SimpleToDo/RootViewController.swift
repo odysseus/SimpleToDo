@@ -36,13 +36,39 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         super.didReceiveMemoryWarning()
     }
     
+    // Getting and Destroying View Controllers
+    
     func viewControllerAtIndex(index: Int) -> ToDoListViewController {
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("ToDoListViewController") as! ToDoListViewController
+        vc.manager = self
         vc.index = index
-        vc.toDoList = toDoLists.listAtIndex(index)
+        vc.toDoList = toDoLists[index]
         
         return vc
     }
+    
+    func createAndDisplayNewList() {
+        toDoLists.newList()
+        let index = toDoLists.lastIndex()
+        
+        let newListVC = viewControllerAtIndex(index)
+        pageViewController?.setViewControllers([newListVC], direction: .Forward, animated: true, completion: nil)
+    }
+    
+    func removeToDoListAtIndex(index: Int) {
+        toDoLists.removeAtIndex(index)
+        
+        var nextVC: ToDoListViewController
+        if index == 0 {
+            nextVC = viewControllerAtIndex(0)
+        } else {
+            nextVC = viewControllerAtIndex(index - 1)
+        }
+        
+        self.pageViewController!.setViewControllers([nextVC], direction: .Reverse, animated: true, completion: nil)
+    }
+    
+    // UIPageView Delegate and Data Source Methods
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let vc = viewController as! ToDoListViewController
@@ -70,10 +96,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         }
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return toDoLists.count()
-    }
-    
+    // NSUserDefaults Data saving method
     func saveData() {
         let defaults = NSUserDefaults.standardUserDefaults()
         let encodedLists = NSKeyedArchiver.archivedDataWithRootObject(toDoLists)
@@ -81,6 +104,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         defaults.setObject(encodedLists, forKey: "toDoLists")
     }
     
+    // Populates eight lists with seed data for ease of testing and because Monty Python references are the best seed data
     func seedData() -> ToDoListCollection {
         let titles = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"]
         let e = "egg"

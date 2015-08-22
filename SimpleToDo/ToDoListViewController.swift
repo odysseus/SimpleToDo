@@ -13,6 +13,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     var index: Int?
     var toDoList = ToDoList(listName: "To Do")
     var selectedItem: ToDoItem?
+    var manager: RootViewController?
     
     @IBOutlet weak var listNameButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -30,9 +31,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
         listNameButton.titleLabel?.adjustsFontSizeToFitWidth = true
         listNameButton.titleLabel?.lineBreakMode = .ByClipping
     }
-    
-    override func viewWillAppear(animated: Bool) {
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,6 +41,10 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func showCompletedToggled(sender: AnyObject) {
         toDoList.showCompleted = showCompletedSwitch.on
         tableView.reloadData()
+    }
+    
+    @IBAction func newList(sender: AnyObject) {
+        manager!.createAndDisplayNewList()
     }
     
     // Table View Functions
@@ -120,8 +122,6 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     // Unwind Actions
     
     @IBAction func unwindFromChangeListName(segue: UIStoryboardSegue) {
-        println(segue.sourceViewController)
-        println(segue.destinationViewController)
         let source = segue.sourceViewController as! ChangeListNameViewController
         let name = source.nameField.text
         if name != "" {
@@ -178,6 +178,10 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func unwindFromRemoveCompleted(segue: UIStoryboardSegue) {
         self.toDoList.removeCompleted()
         self.tableView.reloadData()
+    }
+    
+    @IBAction func unwindFromSelfDestruct(segue: UIStoryboardSegue) {
+        manager!.removeToDoListAtIndex(index!)
     }
 
 }

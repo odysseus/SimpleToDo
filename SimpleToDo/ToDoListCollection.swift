@@ -21,16 +21,16 @@ class ToDoListCollection: NSObject, NSCoding {
         lists = aDecoder.decodeObjectForKey("lists") as! [ToDoList]
     }
     
+    subscript(index: Int) -> ToDoList {
+        return lists[index]
+    }
+    
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(lists, forKey: "lists")
     }
     
     func count() -> Int {
         return lists.count
-    }
-    
-    func listAtIndex(index: Int) -> ToDoList {
-        return lists[index]
     }
     
     func addList(list: ToDoList) {
@@ -41,8 +41,16 @@ class ToDoListCollection: NSObject, NSCoding {
         lists.append(ToDoList(listName: name))
     }
     
-    func addEmptyList() {
+    func lastIndex() -> Int {
+        return lists.count - 1
+    }
+    
+    func newList() {
         addList(ToDoList())
+    }
+    
+    func removeAtIndex(index: Int) {
+        lists.removeAtIndex(index)
     }
    
 }
